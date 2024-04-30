@@ -20,3 +20,14 @@ var y = 30;
 
 numbersForSomething(x, y);
 
+function displayReceipt(totalDue, amountPaid) {
+    var change = amountPaid - totalDue;
+    console.log("Total Due: " + "$" + totalDue);
+    console.log("Amount paid:" + "$" + amountPaid);
+    console.log("Change:" + "$" + change); 
+    console.log();
+}
+displayReceipt(11.75, 20);
+displayReceipt(11.75, 11.75);
+displayReceipt(11.75, 10);
+
