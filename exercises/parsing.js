@@ -8,3 +8,7 @@ let lastName = name.substring(positionOfLastSpace + 1);
 console.log(firstName);
 console.log(middleName);
 console.log(lastName);
+
+
+let message = `Your first name is ${firstName} and your last name is ${lastName}.`;
+console.log(message);
