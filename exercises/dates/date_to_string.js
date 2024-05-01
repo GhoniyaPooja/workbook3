@@ -1,4 +1,4 @@
-"use strick";
+"use strict";
 //Exercise
 
 let d = new Date();
