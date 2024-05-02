@@ -70,31 +70,36 @@
     </main>
 
     <script>
-      "use script";
+      "use strict";
+      
       window.onload = function init() {
-        const pickupDateInput = document.getElementById("pickupDateInput");
-        const tollTagCheckbox = document.getElementById("tollTagCheckbox");
-        const under25Yes = document.getElementById("under25Yes");
-        const under25No = document.getElementById("under25No");
         const estimateButton = document.getElementById("estimateButton");
         estimateButton.onclick = estimate;
+      }
 
         function estimate() {
-          if (tollTagCheckbox.checked) {
-            console.log("checked");
-          } else {
-            console.log("not checked");
-          }
 
-          if (under25Yes.checked) {
-            console.log("Yes");
-          }
+        const pickupDateInput = document.getElementById("pickupDateInput");
+        const numberOfDaysInput = document.getElementById("numberOfDaysInput");
+        const tollTagCheckbox = document.getElementById("tollTagCheckbox");
+        const gpsCheckbox = document.getElementById("gpsCheckbox");
+        const roadsideCheckbox = document.getElementById("roadsideCheckbox");
+        const under25Yes = document.getElementById("under25Yes");
+        const under25No = document.getElementById("under25No");
 
-          if (under25No.checked) {
-            console.log("No");
-          }
+        const carRentalTotalTD = document.getElementById("carRentalTotalTD");
+        const optionsTotalTD = document.getElementById("optionsTotalTD");
+        const under25TotalTD = document.getElementById("under25TotalTD");
+        const totalTD = document.getElementById("totalTD");
+
+        const dailyCarRentalRate = 29.99;
+        const numberOfDays = numberOfDaysInput.value;
+        const carRent = dailyCarRentalRate * numberOfDays;
+        carRentalTotalTD.innerText = carRent;
+        console.log(carRent);
+
         }
-      };
+      
     </script>
     <!-- <script
       src="https://dohliam.github.io/dropin-minimal-css/switcher.js"
