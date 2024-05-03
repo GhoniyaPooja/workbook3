@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ice Cream</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
+    <style>
+      #toppingsCheckbox {
+        display: block;
+        border: 1px solid lightblue;
+        padding: 2rem;
+        width: 75%;
+      }
+
+  .totals{
+    width: 16rem;
+    
+  }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form>
+        <label for="">Number of scoops</label>
+        <input type="number" id="numberOfScoopInput" />
+        <fieldset>
+          <input type="radio" name="coneAndCup" id="coneOption" />
+          <label for="coneOption">Cone</label>
+          <input type="radio" name="coneAndCup" id="cupOption" />
+          <label for="cupOption">Cup</label>
+        </fieldset>
+        <fieldset id="toppingsCheckbox">
+          <legend>Toppings</legend>
+          <input type="checkbox" id="sprinklesCheckbox" />
+          <label for="sprinklesCheckbox">Sprinkles ($.50)</label>
+          <input type="checkbox" id="whipedCreamCheckedbox" />
+          <label for="whipedCreamCheckedbox">Whiped Cream ($.25)</label
+          ><br /><br />
+          <input type="checkbox" id="hotFudgeCheckbox" />
+          <label for="hotFudgeCheckbox">Hot Fudge($1.25)</label>
+          <input type="checkbox" id="cherryCheckbox" />
+          <label for="cherryCheckbox">Cherry ($0.25)</label>
+        </fieldset>
+        <button type="button" id="submitOrderBtn">Submit Order</button>
+        <table class="totals">
+          <tbody>
+            <tr>
+              <td>Base Price:</td>
+              <td id="basePriceTD">$xx.xx</td>
+            </tr>
+            <tr>
+              <td>Tax:</td>
+              <td id="taxAmountTD">$xx.xx</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Total Due:</td>
+              <td id="totalDueTD">$xx.xx</td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
+    </main>
+
+    <script>
+      window.onload = function init() {
+        const submitOrderBtn = document.getElementById("submitOrderBtn");
+        const cupOption = document.getElementById("cupOption");
+        const coneOption = document.getElementById("coneOption");
+
+        toppingsCheckbox();
+        cupOption.onclick = toppingsCheckbox;
+        coneOption.onclick = toppingsCheckbox;
+        submitOrderBtn.onclick = totalPayment;
+      }
+
+
+      function totalPayment() {
+        const numberOfScoop = Number(document.getElementById("numberOfScoopInput").value);
+
+        const coneOption = document.getElementById("coneOption").checked;
+        const cupOption = document.getElementById("cupOption").checked;
+
+        const sprinklesCheckbox = document.getElementById("sprinklesCheckbox").checked;
+        const whipedCreamCheckbox = document.getElementById("whipedCreamCheckbox").checked;
+        const hotFudgeCheckbox = document.getElementById("hotFudgeCheckbox").checked;
+        const cherryCheckbox = document.getElementById("cherryCheckbox").checked;
+
+        const basePriceTD = document.getElementById("basePriceTD");
+        const taxAmountTD = document.getElementById("taxAmountTD");
+        const totalDueTD = document.getElementById("totalDueTD");
+
+        let oneScoopIceCream = 2.25;
+
+        if (numberOfScoop > 1) {
+          oneScoopIceCream += 1.25 * (numberOfScoop - 1);
+        }
+
+        toppingsTotal = 0;
+        if (cupOption) {
+          if (sprinklesCheckbox) {
+            toppingsTotal += 0.5;
+          }
+          if (whipedCreamCheckbox) {
+            toppingsTotal += 0.25;
+          }
+          if (hotFudgeCheckbox) {
+            toppingsTotal += 1.25;
+          }
+          if (cherryCheckbox) {
+            toppingsTotal += 0.25;
+          }
+        } else {
+          toppingsTotal = 0;
+        }
+
+        let basePrice = oneScoopIceCream + toppingsTotal;
+        basePriceTD.innerText = basePrice;
+        
+
+        let taxAmount = basePrice * 0.08;
+        taxAmountTD.innerText = taxAmount;
+
+        let totalDue = taxAmount + basePrice;
+        totalDueTD.innerText = totalDue;
+      }
+
+
+      function toppingsCheckbox() {
+        const cupOption = document.getElementById("cupOption").checked;
+        const toppingsCheckbox = document.getElementById("toppingsCheckbox");
+
+        if (cupOption) {
+          toppingsCheckbox.style.display = "block";
+        } else {
+          toppingsCheckbox.style.display = "none";
+        }
+      }
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
