@@ -37,8 +37,8 @@
           <legend>Toppings</legend>
           <input type="checkbox" id="sprinklesCheckbox" />
           <label for="sprinklesCheckbox">Sprinkles ($.50)</label>
-          <input type="checkbox" id="whipedCreamCheckedbox" />
-          <label for="whipedCreamCheckedbox">Whiped Cream ($.25)</label
+          <input type="checkbox" id="whipedCreamCheckbox" />
+          <label for="whipedCreamCheckbox">Whiped Cream ($.25)</label
           ><br /><br />
           <input type="checkbox" id="hotFudgeCheckbox" />
           <label for="hotFudgeCheckbox">Hot Fudge($1.25)</label>
@@ -86,10 +86,10 @@
         const coneOption = document.getElementById("coneOption").checked;
         const cupOption = document.getElementById("cupOption").checked;
 
-        const sprinklesCheckbox = document.getElementById("sprinklesCheckbox").checked;
-        const whipedCreamCheckbox = document.getElementById("whipedCreamCheckbox").checked;
-        const hotFudgeCheckbox = document.getElementById("hotFudgeCheckbox").checked;
-        const cherryCheckbox = document.getElementById("cherryCheckbox").checked;
+        const sprinklesCheckbox = document.getElementById("sprinklesCheckbox");
+        const whipedCreamCheckbox = document.getElementById("whipedCreamCheckbox");
+        const hotFudgeCheckbox = document.getElementById("hotFudgeCheckbox");
+        const cherryCheckbox = document.getElementById("cherryCheckbox");
 
         const basePriceTD = document.getElementById("basePriceTD");
         const taxAmountTD = document.getElementById("taxAmountTD");
@@ -103,17 +103,18 @@
 
         toppingsTotal = 0;
         if (cupOption) {
-          if (sprinklesCheckbox) {
-            toppingsTotal += 0.5;
+          if (sprinklesCheckbox.checked) {
+            toppingsTotal += 0.50;
           }
-          if (whipedCreamCheckbox) {
+          if (whipedCreamCheckbox.checked) {
             toppingsTotal += 0.25;
           }
-          if (hotFudgeCheckbox) {
+          if (hotFudgeCheckbox.checked) {
             toppingsTotal += 1.25;
           }
-          if (cherryCheckbox) {
+          if (cherryCheckbox.checked) {
             toppingsTotal += 0.25;
+
           }
         } else {
           toppingsTotal = 0;
